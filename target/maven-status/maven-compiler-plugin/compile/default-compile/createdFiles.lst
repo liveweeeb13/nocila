@@ -1,0 +1,5 @@
+fr\liveweeeb\managers\PluginManager.class
+fr\liveweeeb\Nocila.class
+fr\liveweeeb\commands\aboutCommand.class
+fr\liveweeeb\utils\Utils.class
+fr\liveweeeb\listeners\PlayerListener.class

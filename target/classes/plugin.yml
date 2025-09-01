@@ -1,0 +1,11 @@
+main: fr.liveweeeb.Nocila
+version: 1.0.0-SNAPSHOT
+name: Nocila
+description: Mon premiere plugin flemme de faire une bio
+author: liveweeeb
+api-version: 1.13
+
+commands: 
+      about:
+            description: Send about Nocila
+            usage: /about
