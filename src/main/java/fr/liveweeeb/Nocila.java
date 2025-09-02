@@ -6,6 +6,7 @@ import fr.liveweeeb.listeners.PlayerListener;
 
 // Commandes
 import fr.liveweeeb.commands.aboutCommand;
+import fr.liveweeeb.commands.broadcastCommand;
 
 
 // JSP
@@ -20,10 +21,7 @@ public class Nocila extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        // Créer le dossier et le fichier config s'ils n'existent pas
         createConfigIfNotExists();
-        
-        // Charger la configuration
         reloadConfig();
         
         // Récupérer le prefix
@@ -35,14 +33,17 @@ public class Nocila extends JavaPlugin {
         // Register listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 
-        getLogger().info(prefix + " Nocila has been enabled!");
+        getLogger().info("§aNocila a été activé avec succès!");
 
+
+        // Load les commandes
         getCommand("about").setExecutor(new aboutCommand(this));
+        getCommand("broadcast").setExecutor(new broadcastCommand(this));
     }
 
     @Override
     public void onDisable() {
-        getLogger().info(prefix + " Nocila has been disabled!");
+       getLogger().info("§cNocila a été désactivé!");
     }
     
     public String getPrefix() {
@@ -60,12 +61,11 @@ public class Nocila extends JavaPlugin {
         File pluginFolder = getDataFolder();
         File configFile = new File(pluginFolder, "config.yml");
         
-        // Créer le dossier s'il n'existe pas
         if (!pluginFolder.exists()) {
             if (pluginFolder.mkdirs()) {
-                getLogger().info("Dossier Nocila créé avec succès");
+                getLogger().info("§aDossier Nocila créé avec succès");
             } else {
-                getLogger().warning("Impossible de créer le dossier Nocila");
+                getLogger().warning("§6Impossible de créer le dossier Nocila");
             }
         }
 
@@ -77,10 +77,10 @@ public class Nocila extends JavaPlugin {
                     // Écrire le contenu par défaut dans le fichier config
                     String defaultConfig = "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n";
                     Files.write(configFile.toPath(), defaultConfig.getBytes(), StandardOpenOption.WRITE);
-                    getLogger().info("Fichier config.yml créé avec succès avec les valeurs par défaut");
+                    getLogger().info("§aFichier config.yml créé avec succès avec les valeurs par défaut");
                 }
             } catch (IOException e) {
-                getLogger().severe("Erreur lors de la création du fichier config.yml: " + e.getMessage());
+                getLogger().severe("§cErreur lors de la création du fichier config.yml: " + e.getMessage());
             }
         }
     }

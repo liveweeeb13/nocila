@@ -5,7 +5,10 @@ description: Mon premiere plugin flemme de faire une bio
 author: liveweeeb
 api-version: 1.13
 
-commands: 
-      about:
-            description: Send about Nocila
-            usage: /about
+commands:
+  about:
+    description: Send about Nocila
+    usage: /about
+  broadcast:
+    description: Envoie un message à tous les joueurs
+    usage: /broadcast <message>
