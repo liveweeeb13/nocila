@@ -75,7 +75,10 @@ public class Nocila extends JavaPlugin {
             try {
                 if (configFile.createNewFile()) {
                     // Écrire le contenu par défaut dans le fichier config
-                    String defaultConfig = "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n";
+                    String defaultConfig = 
+                     "# Ceci est le fichier de configuration de Nocila\n" + 
+                     "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n ";
+
                     Files.write(configFile.toPath(), defaultConfig.getBytes(), StandardOpenOption.WRITE);
                     getLogger().info("§aFichier config.yml créé avec succès avec les valeurs par défaut");
                 }

@@ -1,14 +1,14 @@
 main: fr.liveweeeb.Nocila
-version: 1.0.1-SNAPSHOT
+version: 1.0.0-BETA
 name: Nocila
-description: Mon premiere plugin flemme de faire une bio
+description: Nocila est un plugin qui vise a simplifier les commandes vanilla
 author: liveweeeb
 api-version: 1.13
 
 commands:
   about:
-    description: Send about Nocila
+    description: A propos de Nocila
     usage: /about
   broadcast:
-    description: Envoie un message à tous les joueurs
+    description: Envoie un message a tous les joueurs
     usage: /broadcast <message>

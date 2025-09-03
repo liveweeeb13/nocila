@@ -28,7 +28,8 @@ public class broadcastCommand implements CommandExecutor {
 
         if (args.length == 0) {
             sendMessage(sender, plugin.getPrefix() + " §cUtilisation: /broadcast <message>");
-            sendMessage(sender, "§7§oLes couleurs sont supportées avec le symbole &");
+            sendMessage(sender, "§7§oLes couleurs sont supportées avec le symbole &\nhttps://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome");
+         //   sendMessage(sender, "§7§oLes couleurs sont supportées avec le symbole &");
             return true;
         }
 
