@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import fr.liveweeeb.Nocila;
-import org.bukkit.ChatColor;
 
 public class aboutCommand implements CommandExecutor {
 
@@ -28,7 +27,7 @@ public class aboutCommand implements CommandExecutor {
         sender.sendMessage("§c====================================================");
         sender.sendMessage(plugin.getPrefix() + " §7Name: §a" + name);
         sender.sendMessage(plugin.getPrefix() + " §7Version: §a" + version);
-        sender.sendMessage(plugin.getPrefix() + " §7Auteur: §a" + authors);
+        sender.sendMessage(plugin.getPrefix() + " §7Author: §a" + authors);
         sender.sendMessage(plugin.getPrefix() + " §7Description: §a" + description);
         sender.sendMessage("§c====================================================");
             return true;
@@ -39,7 +38,7 @@ public class aboutCommand implements CommandExecutor {
         player.sendMessage("§c====================================================");
         player.sendMessage(plugin.getPrefix() + " §7Name: §a" + name);
         player.sendMessage(plugin.getPrefix() + " §7Version: §a" + version);
-        player.sendMessage(plugin.getPrefix() + " §7Auteur: §a" + authors);
+        player.sendMessage(plugin.getPrefix() + " §7Author: §a" + authors);
         player.sendMessage(plugin.getPrefix() + " §7Description: §a" + description);
         player.sendMessage("§c====================================================");
 

@@ -21,14 +21,14 @@ public class broadcastCommand implements CommandExecutor {
         
         // Vérifier la permission
         if (!sender.hasPermission("nocila.broadcast")) {
-            sendMessage(sender, plugin.getPrefix() + " §cVous n'avez pas la permission d'utiliser cette commande!");
+            sendMessage(sender, plugin.getPrefix() + " §cYou do not have permission to use this command!");
             return true;
         }
         
 
         if (args.length == 0) {
-            sendMessage(sender, plugin.getPrefix() + " §cUtilisation: /broadcast <message>");
-            sendMessage(sender, "§7§oLes couleurs sont supportées avec le symbole &\nhttps://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome");
+            sendMessage(sender, plugin.getPrefix() + " §cUsage: /broadcast <message>");
+            sendMessage(sender, "§7§oColors are supported with the symbol &\nhttps://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome");
          //   sendMessage(sender, "§7§oLes couleurs sont supportées avec le symbole &");
             return true;
         }
@@ -50,7 +50,7 @@ public class broadcastCommand implements CommandExecutor {
         Bukkit.broadcastMessage(finalMessage);
 
         // Confirmation pour l'envoyeur
-        sendMessage(sender, plugin.getPrefix() + " §aMessage broadcasté avec succès!");
+        sendMessage(sender, plugin.getPrefix() + " §aMessage successfully broadcast!");
 
         return true;
     }

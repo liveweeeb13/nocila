@@ -1,14 +1,51 @@
 main: fr.liveweeeb.Nocila
-version: 1.0.0-BETA
+version: 1.2.0
 name: Nocila
-description: Nocila est un plugin qui vise a simplifier les commandes vanilla
+description: Nocila is a plugin designed to simplify vanilla commands.
 author: liveweeeb
 api-version: 1.13
 
 commands:
   about:
-    description: A propos de Nocila
+    description: About Nocila
     usage: /about
   broadcast:
-    description: Envoie un message a tous les joueurs
+    description: Send a message to all players
     usage: /broadcast <message>
+    permission: nocila.broadcast
+    permission-message: "§cYou don't have permission to use this command!"
+  day:
+    description: Set the day
+    usage: /day
+    permission: nocila.day
+    permission-message: "§cYou don't have permission to use this command!"
+  night:
+    description: Set the night
+    usage: /night
+    permission: nocila.night
+    permission-message: "§cYou don't have permission to use this command!"
+  repair:
+    description: Repair the item in your hand
+    usage: /repair
+    permission: nocila.repair
+    permission-message: "§cYou don't have permission to use this command!"
+  rename:
+    description: Rename the item in your hand
+    usage: /rename <name>
+    permission: nocila.rename
+    permission-message: "§cYou don't have permission to use this command!"
+  lore:
+    description: Add lore to the item in your hand
+    usage: /lore <text>
+    permission: nocila.lore
+    permission-message: "§cYou don't have permission to use this command!"
+  smite:
+    description: Strike a player with lightning
+    usage: /smite <player>
+    permission: nocila.smite
+    permission-message: "§cYou don't have permission to use this command!"
+  craft:
+    description: Open a Workbench
+    usage: /craft
+    permission: nocila.craft
+    permission-message: "§cYou don't have permission to use this command!"
