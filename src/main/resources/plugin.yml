@@ -1,5 +1,5 @@
 main: fr.liveweeeb.Nocila
-version: 1.2.0
+version: 1.3.0-BETA
 name: Nocila
 description: Nocila is a plugin designed to simplify vanilla commands.
 author: liveweeeb
@@ -48,4 +48,9 @@ commands:
     description: Open a Workbench
     usage: /craft
     permission: nocila.craft
+    permission-message: "§cYou don't have permission to use this command!"
+  hat:
+    description: Wear the item in your hand as a hat
+    usage: /hat
+    permission: nocila.hat
     permission-message: "§cYou don't have permission to use this command!"

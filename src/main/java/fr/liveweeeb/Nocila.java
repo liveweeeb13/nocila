@@ -14,7 +14,7 @@ import fr.liveweeeb.commands.renameCommand;
 import fr.liveweeeb.commands.loreCommand;
 import fr.liveweeeb.commands.smiteCommand;
 import fr.liveweeeb.commands.craftCommand;
-
+import fr.liveweeeb.commands.hatCommand;
 
 
 // JSP
@@ -50,12 +50,15 @@ public class Nocila extends JavaPlugin {
         // // // // //
         getCommand("day").setExecutor(new dayCommand(this));
         getCommand("night").setExecutor(new nightCommand(this));
-        // // // // //
+        // // // // // 1.2.0
         getCommand("rename").setExecutor(new renameCommand(this));
         getCommand("lore").setExecutor(new loreCommand(this));
         getCommand("repair").setExecutor(new repairCommand(this));
         getCommand("smite").setExecutor(new smiteCommand(this));
         getCommand("craft").setExecutor(new craftCommand(this));
+        // // // // // 1.3.0
+        getCommand("hat").setExecutor(new hatCommand(this));
+
     }
 
     @Override
