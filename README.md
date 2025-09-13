@@ -8,21 +8,47 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
 
 ## ✨ Features
 - **`/about`** → Displays information about Nocila.  
+
+
 - **`/day`** → Sets the time to **day**.  
+
+
 - **`/night`** → Sets the time to **night**.  
+
+
 - **`/craft`** → Opens a **portable crafting table**.  
+
+
 - **`/broadcast <message>`** → Sends a global message to all players.  
   - ✅ [Color codes are supported](https://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome/)  
+
 
 - **`/rename <name>`** → Renames the item in your hand.  
   - ✅ [Color codes are supported](https://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome/)  
 
+
 - **`/lore <text>`** → Adds a **description (lore)** to the item in your hand.  
   - ✅ [Color codes are supported](https://www.reddit.com/r/Minecraft/comments/c0z2jn/color_guide_youre_welcome/)  
-  - ✅ Use `\n` to add line breaks.  
+  - Use `\n` to add line breaks.  
+
 
 - **`/repair`** → Instantly repairs the item in your hand.  
+
+
 - **`/smite <player>`** → Strikes the selected player with lightning.  
+
+
+- **`/nocila <arg>`** → Displays the list of **nocila** commands
+  - `<arg>` can be **`help`** to show the general help menu.
+  - `<arg>` can also be a **debug command** (e.g., `debug-update`).
+
+
+- **`/delfire [radius]`** → Removes fire around the player-
+  - A specific **radius** can be defined at the end of the command (`[radius]`).
+  - The **default** and **maximum radius** values can be configured.
+
+
+- **`/hat`** →  Wear the item in your hand as a hat
 
 ---
 
@@ -47,6 +73,9 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
 | `/lore`     | `nocila.lore`        |
 | `/repair`   | `nocila.repair`      |
 | `/smite`    | `nocila.smite`       |
+| `/nocila`   | `nocila.nocila`      |
+| `/hat`      | `nocila.hat`         |
+| `/delfire`  | `nocila.delfire`     |
 
 👉 Operators (**OPs**) automatically have all permissions.  
 

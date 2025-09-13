@@ -26,13 +26,13 @@ public class delfireCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         
-        // Récupérer les valeurs depuis la config
+        // Récupérer les valeurs de la config
         int defaultRadius = plugin.getConfig().getInt("fire.default-radius", 10);
         int maxRadius = plugin.getConfig().getInt("fire.max-radius", 50);
         
         int radius = defaultRadius; // Rayon par défaut depuis la config
 
-        // Vérifier si un rayon personnalisé est spécifié
+        // Si radios custom
         if (args.length > 0) {
             try {
                 radius = Integer.parseInt(args[0]);
@@ -57,7 +57,6 @@ public class delfireCommand implements CommandExecutor {
                 for (int z = -radius; z <= radius; z++) {
                     Location blockLoc = playerLoc.clone().add(x, y, z);
                     
-                    // Vérifier si le bloc est du feu
                     if (world.getBlockAt(blockLoc).getType() == Material.FIRE) {
                         world.getBlockAt(blockLoc).setType(Material.AIR);
                         fireRemoved++;
