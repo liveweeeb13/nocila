@@ -36,7 +36,7 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
 
 ## 🔑 Permissions
 
-| Command     | Permission          |
+| Command     | Permission           |
 |-------------|----------------------|
 | `/about`    | None                 |
 | `/day`      | `nocila.day`         |

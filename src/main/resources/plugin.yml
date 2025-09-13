@@ -1,5 +1,5 @@
 main: fr.liveweeeb.Nocila
-version: 1.3.0-BETA
+version: 1.3.0-BETA2
 name: Nocila
 description: Nocila is a plugin designed to simplify vanilla commands.
 author: liveweeeb
@@ -53,4 +53,14 @@ commands:
     description: Wear the item in your hand as a hat
     usage: /hat
     permission: nocila.hat
+    permission-message: "§cYou don't have permission to use this command!"
+  nocila:
+    description: Show nocila command list
+    usage: /nocila <arg>
+    permission: nocila.nocila
+    permission-message: "§cYou don't have permission to use this command!"
+  delfire:
+    description: Show nocila command list
+    usage: /delfire
+    permission: nocila.delfire
     permission-message: "§cYou don't have permission to use this command!"

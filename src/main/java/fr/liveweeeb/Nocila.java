@@ -1,14 +1,18 @@
 package fr.liveweeeb;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.liveweeeb.managers.PluginManager;
+import fr.liveweeeb.utils.UpdateChecker;
 import fr.liveweeeb.listeners.PlayerListener;
 
 // Commandes
 import fr.liveweeeb.commands.aboutCommand;
 import fr.liveweeeb.commands.broadcastCommand;
 import fr.liveweeeb.commands.dayCommand;
+import fr.liveweeeb.commands.delfireCommand;
 import fr.liveweeeb.commands.nightCommand;
+import fr.liveweeeb.commands.nocilaCommand;
 import fr.liveweeeb.commands.repairCommand;
 import fr.liveweeeb.commands.renameCommand;
 import fr.liveweeeb.commands.loreCommand;
@@ -16,12 +20,15 @@ import fr.liveweeeb.commands.smiteCommand;
 import fr.liveweeeb.commands.craftCommand;
 import fr.liveweeeb.commands.hatCommand;
 
-
+import java.io.BufferedReader;
 // JSP
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+
 
 public class Nocila extends JavaPlugin {
     
@@ -41,7 +48,7 @@ public class Nocila extends JavaPlugin {
         // Register listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
 
-        getLogger().info("Nocila has been successfully enabled! l38");
+        getLogger().info("Nocila has been successfully enabled!");
 
 
         // Load les commandes
@@ -58,17 +65,49 @@ public class Nocila extends JavaPlugin {
         getCommand("craft").setExecutor(new craftCommand(this));
         // // // // // 1.3.0
         getCommand("hat").setExecutor(new hatCommand(this));
+        getCommand("delfire").setExecutor(new delfireCommand(this));
 
-    }
+
+        nocilaCommand nocilaCmd = new nocilaCommand(this);
+        getCommand("nocila").setExecutor(nocilaCmd);
+        getCommand("nocila").setTabCompleter(nocilaCmd);
+
+
+    UpdateChecker updater = new UpdateChecker(this, "https://liveweeeb13.github.io/nocila.txt");
+    updater.check();
+
+    // Enregistrer le listener pour prévenir les OP qui rejoignent après
+    getServer().getPluginManager().registerEvents(updater, this);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void onDisable() {
-       getLogger().info("Nocila has been disabled! l50");
+       getLogger().info("Nocila has been disabled! ");
     }
     
     public String getPrefix() {
         return prefix;
     }
+
+    public boolean isUpdateEnabled() {
+    return getConfig().getBoolean("update", true);
+}
+
     
     // Méthode pour recharger la configuration SERT A R 
     public void reloadPluginConfig() {
@@ -95,9 +134,16 @@ public class Nocila extends JavaPlugin {
             try {
                 if (configFile.createNewFile()) {
                     // Écrire le contenu par défaut dans le fichier config
-                    String defaultConfig = 
-                     "# This is the Nocila configuration file\n" + 
-                     "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n ";
+                        String defaultConfig = 
+                             "# This is the Nocila configuration file\n" + 
+                             "# For information go to https://modrinth.com/plugin/nocila\n" + 
+                             "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n\n" + 
+                             "update: true\n\n" + 
+                             "# Fire command settings\n" +
+                             "fire:\n" +
+                             "  default-radius: 10 # Using a radius larger than 200 may crash your server.\n" +
+                             "  max-radius: 50     # Using a radius larger than 200 may crash your server.\n\n" +
+                             "# Thanks for using Nocila\n";
 
                     Files.write(configFile.toPath(), defaultConfig.getBytes(), StandardOpenOption.WRITE);
                     getLogger().info("config.yml file successfully created with default values");
