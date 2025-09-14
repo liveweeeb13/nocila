@@ -43,12 +43,15 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
   - `<arg>` can also be a **debug command** (e.g., `debug-update`).
 
 
-- **`/delfire [radius]`** → Removes fire around the player-
+- **`/delfire [radius]`** → Removes fire around the player
   - A specific **radius** can be defined at the end of the command (`[radius]`).
-  - The **default** and **maximum radius** values can be configured.
+  - The **default** and **maximum radius** values can be changed in the configuration file.
 
 
 - **`/hat`** →  Wear the item in your hand as a hat
+
+- **[BETA] `/masssummon <entity> <amount>`** → Spawn the number of entities requested
+  - The maximum amount can be changed in the configuration file.
 
 ---
 

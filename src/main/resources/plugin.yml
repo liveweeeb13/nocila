@@ -1,5 +1,5 @@
 main: fr.liveweeeb.Nocila
-version: 1.3.0
+version: 1.4.0-BETA-1
 name: Nocila
 description: Nocila is a plugin designed to simplify vanilla commands.
 author: liveweeeb
@@ -56,11 +56,16 @@ commands:
     permission-message: "§cYou don't have permission to use this command!"
   nocila:
     description: Show nocila command list
-    usage: /nocila <arg>
+    usage: /nocila <help|debug|reload>
     permission: nocila.nocila
     permission-message: "§cYou don't have permission to use this command!"
   delfire:
     description: Remove fire around you
     usage: /delfire
     permission: nocila.delfire
+    permission-message: "§cYou don't have permission to use this command!"
+  masssummon:
+    description: Spawn the number of entities requested
+    usage: /masssummon <entity> <numer>
+    permission: nocila.masssummon
     permission-message: "§cYou don't have permission to use this command!"
