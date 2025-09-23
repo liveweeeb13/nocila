@@ -19,6 +19,7 @@ import fr.liveweeeb.commands.masssummonCommand;
 import fr.liveweeeb.commands.smiteCommand;
 import fr.liveweeeb.commands.craftCommand;
 import fr.liveweeeb.commands.hatCommand;
+import fr.liveweeeb.commands.killallCommand;
 
 // JSP
 import java.io.File;
@@ -58,7 +59,7 @@ public class Nocila extends JavaPlugin {
         getCommand("repair").setExecutor(new repairCommand(this));
         getCommand("smite").setExecutor(new smiteCommand(this));
         getCommand("craft").setExecutor(new craftCommand(this));
-        // // // // // 1.4.0-BETA-1
+        // // // // // 1.4.0-BETA-2
         getCommand("hat").setExecutor(new hatCommand(this));
         getCommand("delfire").setExecutor(new delfireCommand(this));
 
@@ -69,6 +70,8 @@ public class Nocila extends JavaPlugin {
         masssummonCommand masssummonCmd = new masssummonCommand(this);
         getCommand("masssummon").setExecutor(masssummonCmd);
         getCommand("masssummon").setTabCompleter(masssummonCmd);
+
+        getCommand("killall").setExecutor(new killallCommand(this));
 
         UpdateChecker updater = new UpdateChecker(this, "https://liveweeeb13.github.io/nocila.txt");
         updater.check();
@@ -123,6 +126,11 @@ public class Nocila extends JavaPlugin {
                             "  max-radius: 50     # Using a radius larger than 200 may crash your server.\n\n" +
                             "masssummon:\n" +
                             "  max-amount: 50\n\n" +
+                            "killall:\n" +
+                            "   nokill:\n" +
+                            "         - CAT     # It won't kill the   CAT  when the /killall command will be executed\n"+
+                            "         - AXOLOT  # It won't kill the AXOLOT when the /killall command will be executed\n" + 
+                            "         - WOLF    # It won't kill the  WOLF  when the /killall command will be executed\n\n" +
                             "# Thanks for using Nocila\n";
 
                     Files.write(configFile.toPath(), defaultConfig.getBytes(), StandardOpenOption.WRITE);

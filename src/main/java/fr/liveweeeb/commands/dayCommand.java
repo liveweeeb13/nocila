@@ -17,7 +17,7 @@ public class dayCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("§cThis command can only be used by one player");
+            sender.sendMessage("§cThis command can only be used by players");
             return true;
         }
         

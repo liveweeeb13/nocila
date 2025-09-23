@@ -15,8 +15,14 @@ public class UpdateChecker implements Listener {
 
     private final Plugin plugin;
     private final String url;
-    private String currentVersion;
     private boolean updateAvailable = false;
+    private String currentVersion;
+
+    public void pls() {
+    plugin.getLogger().info("Update available: " + updateAvailable);
+}
+
+
 
     private final String[] ignoredKeywords = {"beta", "alpha", "snapshot"};
 

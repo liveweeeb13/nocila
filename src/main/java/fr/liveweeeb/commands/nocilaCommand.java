@@ -38,15 +38,17 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage("§6/night §7- Set the night");
             sender.sendMessage("§6/lore <text> §7- Add lore to the item in your hand");
             sender.sendMessage("§6/repair §7- Repair the item in your hand");
-            sender.sendMessage("§6/delfire §7- Remove fire around you");
+            sender.sendMessage("§6/delfire [radius] §7- Remove fire around you");
             sender.sendMessage("§6/smite <player> §7- Strike a player with lightning");
             sender.sendMessage("§6§o/masssummon <entity> <amount> §7- Spawn the number of entities requested");
+            sender.sendMessage("§6§o/nokill [radius] §7- Kill all non-player entities (except those entered in the config)");
             return true;
 
         } else if (args[0].equalsIgnoreCase("debug")) {
             sender.sendMessage("§eList of available Nocila debug commands:");
             sender.sendMessage("§6/nocila debug-update §7- See if update checking is activated");
             sender.sendMessage("§6/nocila debug-maxsummon §7- See the maximum amount for the /masssummon command");
+            sender.sendMessage("§6/nocila debug-nokill §7- See the list of entities that will not be killed via the /killall command");
             return true;
 
         } else if (args[0].equalsIgnoreCase("debug-update")) {
@@ -59,6 +61,14 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(plugin.getPrefix() + " §c§lDEBUG: §7" + maxAmount);
             return true;
 
+        } else if (args[0].equalsIgnoreCase("debug-nokill")) {
+            
+        List<String> configList = plugin.getConfig().getStringList("killall.nokill");
+            sender.sendMessage(plugin.getPrefix() + " §c§lDEBUG: §7" + String.join(", ", configList));
+
+            
+            return true;
+
         } else if (args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("nocila.reload")) {
                 sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to reload the config!");
@@ -66,6 +76,7 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
             }
 
             plugin.reloadPluginConfig();
+            
             sender.sendMessage(plugin.getPrefix() + " §aConfiguration reloaded successfully!");
             return true;
 

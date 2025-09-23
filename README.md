@@ -53,6 +53,9 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
 - **[BETA] `/masssummon <entity> <amount>`** → Spawn the number of entities requested
   - The maximum amount can be changed in the configuration file.
 
+- **[BETA] `/killall [radius]`** → Kill all non-player entities (except those entered in the config)
+  - If you add ``info`` after the radius, you will see the exceptions.
+
 ---
 
 ## ⚙️ Installation
@@ -79,6 +82,8 @@ Questions, suggestions, or bugs, create a [issue](https://github.com/liveweeeb13
 | `/nocila`   | `nocila.nocila`      |
 | `/hat`      | `nocila.hat`         |
 | `/delfire`  | `nocila.delfire`     |
+| `/killall`  | `nocila.killall`     |
+|    ↳        | or `minecraft.kill`  |
 
 👉 Operators (**OPs**) automatically have all permissions.  
 
