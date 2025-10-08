@@ -1,5 +1,6 @@
 package fr.liveweeeb.commands;
 
+import fr.liveweeeb.managers.ConfigManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,8 +28,8 @@ public class delfireCommand implements CommandExecutor {
         Player player = (Player) sender;
         
         // Récupérer les valeurs de la config
-        int defaultRadius = plugin.getConfig().getInt("fire.default-radius", 10);
-        int maxRadius = plugin.getConfig().getInt("fire.max-radius", 50);
+        int defaultRadius = (int) ConfigManager.getConfigValue("fire.default-radius", 10);
+        int maxRadius = (int) ConfigManager.getConfigValue("fire.max-radius", 50);
         
         int radius = defaultRadius; // Rayon par défaut depuis la config
 

@@ -22,15 +22,8 @@ public class craftCommand implements CommandExecutor {
             return true;
         }
 
-        if (sender instanceof Player && !sender.hasPermission("nocila.craft")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
         Player player = (Player) sender;
-        
         player.openWorkbench(null, true);
-        
         player.sendMessage(plugin.getPrefix() + " §aCrafting table opened!");
 
         return true;

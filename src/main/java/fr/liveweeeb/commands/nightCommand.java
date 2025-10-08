@@ -23,12 +23,6 @@ public class nightCommand implements CommandExecutor {
         
         Player player = (Player) sender;
 
-    // Vérifier la permission (optionnel)
-        if (sender instanceof Player && !sender.hasPermission("nocila.night")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
         World world = player.getWorld();
 
         // Défini a 13000 ticks 

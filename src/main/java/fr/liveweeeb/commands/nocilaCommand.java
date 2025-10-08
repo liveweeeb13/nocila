@@ -1,11 +1,14 @@
 package fr.liveweeeb.commands;
 
+import fr.liveweeeb.managers.ConfigManager;
+import fr.liveweeeb.managers.PluginManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 import fr.liveweeeb.Nocila;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 0) {
@@ -57,13 +61,13 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
             return true;
 
         } else if (args[0].equalsIgnoreCase("debug-maxsummon")) {
-            int maxAmount = plugin.getConfig().getInt("masssummon.max-amount", 50);
+            int maxAmount = (int) ConfigManager.getConfigValue("masssummon.max-amount", 50);
             sender.sendMessage(plugin.getPrefix() + " §c§lDEBUG: §7" + maxAmount);
             return true;
 
         } else if (args[0].equalsIgnoreCase("debug-nokill")) {
-            
-        List<String> configList = plugin.getConfig().getStringList("killall.nokill");
+
+            List<String> configList = (List<String>) ConfigManager.getConfigValue("killall.nokill", List.of());
             sender.sendMessage(plugin.getPrefix() + " §c§lDEBUG: §7" + String.join(", ", configList));
 
             
@@ -75,7 +79,7 @@ public class nocilaCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
 
-            plugin.reloadPluginConfig();
+            PluginManager.getInstance().getConfigManager().reloadPluginConfig();
             
             sender.sendMessage(plugin.getPrefix() + " §aConfiguration reloaded successfully!");
             return true;
