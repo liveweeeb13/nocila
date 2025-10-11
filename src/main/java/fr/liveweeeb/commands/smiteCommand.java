@@ -18,11 +18,6 @@ public class smiteCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender instanceof Player && !sender.hasPermission("nocila.smite")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
         if (args.length == 0) {
             sender.sendMessage(plugin.getPrefix() + " §cUsage: /smite <player>");
             return true;

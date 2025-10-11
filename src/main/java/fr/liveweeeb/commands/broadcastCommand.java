@@ -18,13 +18,6 @@ public class broadcastCommand implements CommandExecutor {
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
-        // Vérifier la permission
-        if (!sender.hasPermission("nocila.broadcast")) {
-            sendMessage(sender, plugin.getPrefix() + " §cYou do not have permission to use this command!");
-            return true;
-        }
-        
 
         if (args.length == 0) {
             sendMessage(sender, plugin.getPrefix() + " §cUsage: /broadcast <message>");

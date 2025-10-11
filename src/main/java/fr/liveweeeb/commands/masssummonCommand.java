@@ -1,5 +1,6 @@
 package fr.liveweeeb.commands;
 
+import fr.liveweeeb.managers.ConfigManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,9 +39,7 @@ public class masssummonCommand implements CommandExecutor, TabCompleter {
 
         Player player = (Player) sender;
 
-        int maxAmount = plugin.getConfig().getInt("masssummon.max-amount", 50);
-
-
+        int maxAmount = (int) ConfigManager.getConfigValue("masssummon.max-amount", 50);
 
         if (args.length < 2) {
             player.sendMessage(plugin.getPrefix() + " §cUsage: /masssummon <entity> <amount>");
@@ -104,7 +103,7 @@ public class masssummonCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
-        int maxAmountF = plugin.getConfig().getInt("masssummon.max-amount", 50);
+        int maxAmountF = (int) ConfigManager.getConfigValue("masssummon.max-amount", 50);
 
 
         if (args.length == 1) {

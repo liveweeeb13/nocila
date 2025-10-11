@@ -26,12 +26,6 @@ public class renameCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-    // Vérifier la permission (optionnel)
-        if (sender instanceof Player && !sender.hasPermission("nocila.rename")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
         ItemStack item = player.getInventory().getItemInMainHand();
 
         // Vérifier si le joueur tient un item

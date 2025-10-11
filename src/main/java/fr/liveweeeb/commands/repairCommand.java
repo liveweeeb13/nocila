@@ -26,12 +26,6 @@ public class repairCommand implements CommandExecutor {
             return true;
         }
 
-            // Vérifier la permission (optionnel)
-        if (sender instanceof Player && !sender.hasPermission("nocila.repair")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
         Player player = (Player) sender;
         ItemStack item = player.getInventory().getItemInMainHand();
 
@@ -57,7 +51,7 @@ public class repairCommand implements CommandExecutor {
 
         // Réparer l'item
         damageable.setDamage(0);
-        item.setItemMeta((ItemMeta) damageable);
+        item.setItemMeta(damageable);
 
         player.sendMessage(plugin.getPrefix() + " §aItem successfully repaired!");
 

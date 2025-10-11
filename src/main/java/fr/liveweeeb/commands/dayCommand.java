@@ -23,14 +23,6 @@ public class dayCommand implements CommandExecutor {
         
         Player player = (Player) sender;
 
-
-    // Vérifier la permission (optionnel)
-        if (sender instanceof Player && !sender.hasPermission("nocila.day")) {
-            sender.sendMessage(plugin.getPrefix() + " §cYou don't have permission to use this command !");
-            return true;
-        }
-
-
         World world = player.getWorld();
 
         // Mettre l'heure à 1000 ticks (6h du matin - début du jour)

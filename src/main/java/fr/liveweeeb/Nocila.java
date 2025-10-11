@@ -1,46 +1,20 @@
 package fr.liveweeeb;
 
+import fr.liveweeeb.managers.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.liveweeeb.managers.PluginManager;
 import fr.liveweeeb.utils.UpdateChecker;
 import fr.liveweeeb.listeners.PlayerListener;
 
 // Commandes
-import fr.liveweeeb.commands.aboutCommand;
-import fr.liveweeeb.commands.broadcastCommand;
-import fr.liveweeeb.commands.dayCommand;
-import fr.liveweeeb.commands.delfireCommand;
-import fr.liveweeeb.commands.nightCommand;
-import fr.liveweeeb.commands.nocilaCommand;
-import fr.liveweeeb.commands.repairCommand;
-import fr.liveweeeb.commands.renameCommand;
-import fr.liveweeeb.commands.loreCommand;
-import fr.liveweeeb.commands.masssummonCommand;
-import fr.liveweeeb.commands.smiteCommand;
-import fr.liveweeeb.commands.craftCommand;
-import fr.liveweeeb.commands.hatCommand;
-import fr.liveweeeb.commands.killallCommand;
-
-// JSP
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
+import fr.liveweeeb.commands.*;
 
 public class Nocila extends JavaPlugin {
 
-    private String prefix;
-
     @Override
     public void onEnable() {
-        createConfigIfNotExists();
-        reloadConfig();
-
-        // Récupérer le prefix
-        prefix = getConfig().getString("prefix", "§3§l[§9§lNocila§3§l]§r");
-
         // Initialize managers
-        PluginManager.getInstance().initialize();
+        PluginManager.getInstance().initialize(this);
 
         // Register listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
@@ -87,58 +61,10 @@ public class Nocila extends JavaPlugin {
     }
 
     public String getPrefix() {
-        return prefix;
+        return PluginManager.getInstance().getConfigManager().getPrefix();
     }
 
     public boolean isUpdateEnabled() {
-        return getConfig().getBoolean("update", true);
-    }
-
-    // Méthode pour recharger la configuration SERT A R
-    public void reloadPluginConfig() {
-        reloadConfig();
-        prefix = getConfig().getString("prefix", "§3§l[§9§lNocila§3§l]§r");
-    }
-
-    private void createConfigIfNotExists() {
-        File pluginFolder = getDataFolder();
-        File configFile = new File(pluginFolder, "config.yml");
-
-        if (!pluginFolder.exists()) {
-            if (pluginFolder.mkdirs()) {
-                getLogger().info("Nocila file successfully created");
-            } else {
-                getLogger().warning("Unable to create Nocila folder");
-            }
-        }
-
-        if (!configFile.exists()) {
-            try {
-                if (configFile.createNewFile()) {
-                    // Écrire le contenu par défaut dans le fichier config
-                    String defaultConfig = "# This is the Nocila configuration file\n" +
-                            "# For information go to https://modrinth.com/plugin/nocila\n" +
-                            "prefix: \"§3§l[§9§lNocila§3§l]§r\"\n\n" +
-                            "update: true\n\n" +
-                            "# Fire command settings\n" +
-                            "fire:\n" +
-                            "  default-radius: 10 # Using a radius larger than 200 may crash your server.\n" +
-                            "  max-radius: 50     # Using a radius larger than 200 may crash your server.\n\n" +
-                            "masssummon:\n" +
-                            "  max-amount: 50\n\n" +
-                            "killall:\n" +
-                            "   nokill:\n" +
-                            "         - CAT     # It won't kill the   CAT  when the /killall command will be executed\n"+
-                            "         - AXOLOT  # It won't kill the AXOLOT when the /killall command will be executed\n" + 
-                            "         - WOLF    # It won't kill the  WOLF  when the /killall command will be executed\n\n" +
-                            "# Thanks for using Nocila\n";
-
-                    Files.write(configFile.toPath(), defaultConfig.getBytes(), StandardOpenOption.WRITE);
-                    getLogger().info("config.yml file successfully created with default values");
-                }
-            } catch (IOException e) {
-                getLogger().severe("Error creating config.yml file: " + e.getMessage());
-            }
-        }
+        return (boolean) ConfigManager.getConfigValue("update", true);
     }
 }

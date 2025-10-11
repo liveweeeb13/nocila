@@ -1,5 +1,6 @@
 package fr.liveweeeb.commands;
 
+import fr.liveweeeb.managers.ConfigManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,10 +24,11 @@ public class killallCommand implements CommandExecutor {
         loadNoKillEntities();
     }
 
+    @SuppressWarnings("unchecked")
     private void loadNoKillEntities() {
         // Charger la liste depuis la config
         noKillEntities.clear();
-        List<String> configList = plugin.getConfig().getStringList("killall.nokill");
+        List<String> configList = (List<String>) ConfigManager.getConfigValue("killall.nokill", List.of());
         
         for (String entityName : configList) {
             noKillEntities.add(entityName.toUpperCase());
@@ -60,7 +62,7 @@ public class killallCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             world = player.getWorld();
-            
+
             if (args.length > 0) {
                 try {
                     radius = Integer.parseInt(args[0]);
